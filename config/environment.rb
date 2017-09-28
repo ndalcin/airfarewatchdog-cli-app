@@ -5,7 +5,9 @@ require 'open-uri'
 require 'pry'
 require 'nokogiri'
 
-require_relative '../lib/flightdeals-cli/scraper'
-require_relative '../lib/flightdeals-cli/flightdeal'
-require_relative '../lib/flightdeals-cli/dealslist'
-require_relative '../lib/flightdeals-cli/cli'
+# require_relative '../lib/flightdeals-cli/scraper.rb'
+# require_relative '../lib/flightdeals-cli/deal.rb'
+# require_relative '../lib/flightdeals-cli/cli.rb'
+# require_relative '../lib/flightdeals-cli.rb'
+
+require_all 'lib'
