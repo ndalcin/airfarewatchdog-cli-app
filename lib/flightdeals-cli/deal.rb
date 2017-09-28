@@ -1,15 +1,15 @@
-class FlightDealCLI::Deal
+class Deal
 
   attr_accessor :price, :departure, :arrival, :link, :airline, :availabledays, :startingon, :endingon, :url
 
   @@all = []
 
-  def initialize(price, departure, arrival, link)
-    @price= price
-    @departure = departure
-    @arrival= arrival
-    @link= link
+  def initialize
     @@all << self
+  end
+
+  def self.all
+    @@all
   end
 
   def airline

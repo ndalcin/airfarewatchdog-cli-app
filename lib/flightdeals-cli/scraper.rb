@@ -6,19 +6,26 @@
 # 2. scrape details of list
 # 3. scrape individual deals from list and add to list
 
-class FlightDealCLI::Scraper
+class Scraper
 
+  attr_accessor :doc
 
-  def get_page
-    Nokogiri::HTML(open("http://www.airfarewatchdog.com/top-50-fares/"))
+  def initialize
+    @doc = Nokogiri::HTML(open("http://www.airfarewatchdog.com/top-50-fares/"))
   end
 
   def scrape_deals
-    self.get_page.css(".col-xs-12 .fare_list .fare_row")
+    @doc.css(".col-xs-12 .fare_list a")
   end
 
   def make_deal
-    scrape_deals.each do |deal|
+    scrape_deals.each do |d|
+      binding.pry
+      new_deal = Deal.new
+      new_deal.price = d.css(".fare_price_text").text
+      new_deal.departure = d.css(".fare_departure").text.strip.delete "\n"
+      new_deal.arrival = d.css(".fare_arrival").text.strip.delete "\n"
+      new_deal.link = d.attr("href")
     end
   end
 
