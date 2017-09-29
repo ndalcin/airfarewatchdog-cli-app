@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require_relative "../config/environment"
+
+puts "Welcome to FlightDeals!"
+
+s = Scraper.new
+
+
+
+s.scrape_deals.each do |d|
+  new_deal = Deal.new
+  new_deal.price = d.css(".fare_price_text").text
+  new_deal.departure = d.css(".fare_departure").text.strip.gsub!( /\s+/, ' ').delete "\n"
+  new_deal.arrival = d.css(".fare_arrival").text.strip.gsub!( /\s+/, ' ').delete "\n"
+  new_deal.link = d.attr("href")
+
+
+puts "#{new_deal.price} - #{new_deal.departure}"
+
+end

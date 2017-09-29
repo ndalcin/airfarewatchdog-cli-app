@@ -1,6 +1,6 @@
 class Deal
 
-  attr_accessor :price, :departure, :arrival, :link, :airline, :availabledays, :startingon, :endingon, :url
+  attr_accessor :price, :departure, :arrival, :halflink, :deallink, :airline, :advanced_purchase, :availabledays, :startingon, :endingon, :url
 
   @@all = []
 
@@ -31,7 +31,6 @@ class Deal
   def url
 
   end
-
 
 
 
