@@ -8,36 +8,38 @@
 
 class Scraper
 
-  attr_accessor :doc, :links
-
-
-
-  def initialize
-    @doc = Nokogiri::HTML(open("http://www.airfarewatchdog.com/top-50-fares/"))
-    @links = []
+  def get_page
+    Nokogiri::HTML(open("http://www.airfarewatchdog.com/top-50-fares/"))
   end
 
-
-  def scrape_deals
-    @doc.css(".col-xs-12 .fare_list a")
+  def scrape_list_page
+    self.get_page.css(".col-xs-12 .fare_list a")
   end
 
   def make_deal
-    scrape_deals.each do |d|
-      new_deal = Deal.new
-      new_deal.price = d.css(".fare_price_text").text
-      new_deal.departure = d.css(".fare_departure").text.strip.gsub!( /\s+/, ' ').delete "\n"
-      new_deal.arrival = d.css(".fare_arrival").text.strip.gsub!( /\s+/, ' ').delete "\n"
-      half_link = d.attr("href")
-      links << new_deal.link = "http://www.airfarewatchdog.com/" + half_link
+    scrape_list_page.each do |deal|
+      Deal.new_from_deal_page(deal)
     end
   end
 
-  def make_deal_details
-    real_links.each do {|link| Nokogiri::HTML(open("link"))}
-  end
+  
 
+#   def scrape_single_deal
+#     Deal.all.each do |deal|
+#     more_details = Scraper.scrape_deal_page(BASE_PATH + student.profile_url)
+#     student.add_student_attributes(attributes)
+#   end
+# end
 
+  # def make_details
+  #   scrape_deal_page.each do |a|
+  #
+  #     d = Deal.new
+  #     a.each do |details|
+  #       details.css(".fare-details .fare-details__pair_container")
+  #       if
+  #
+  #
 
 
 
