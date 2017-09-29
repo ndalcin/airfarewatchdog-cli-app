@@ -2,9 +2,6 @@
 #AirfareWatchDogScraper.new(http://www.airfarewatchdog.com/top-50-fares/).scrape
 #===> returns list of daily deals
 
-# 1. need new FlightDealScraper class
-# 2. scrape details of list
-# 3. scrape individual deals from list and add to list
 
 class FlightDealCLI::Scraper
 
@@ -23,13 +20,3 @@ class FlightDealCLI::Scraper
   end
 
 end
-
-  # def make_details
-  #   scrape_deal_page.each do |a|
-  #
-  #     d = Deal.new
-  #     a.each do |details|
-  #       details.css(".fare-details .fare-details__pair_container")
-  #       if
-  #
-  #

@@ -68,14 +68,12 @@ class FlightDealCLI::Deal
     end
   end
 
-
   def travel_condition_6 #probably extra, but just incase!
     if page.css(".fare-details .fare-details__pair_container .fare-details__key")[5].text.!empty?
       @label_6 ||= page.css(".fare-details .fare-details__pair_container .fare-details__key")[5].text
       @value_6 ||= page.css(".fare-details .fare-details__pair_container .fare-details__val")[5].text
     end
   end
-
 
 
 
