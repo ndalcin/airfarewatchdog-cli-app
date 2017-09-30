@@ -25,52 +25,82 @@ class FlightDealCLI::Deal
     @@all
   end
 
-  def self.find(num)
-    self.all[num-1]
+  def self.find(input)
+    self.all[input-1]
   end
 
   def page
     @page = Nokogiri::HTML(open(self.link))
   end
 
-  def travel_condition_1 #always 'Airlines'
-    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[0].text.!empty?
-      @label_1 ||= page.css(".fare-details .fare-details__pair_container .fare-details__key")[0].text
-      @value_1 ||= page.css(".fare-details .fare-details__pair_container .fare-details__val")[0].text
+  def label_1 #always 'Airlines'
+    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[0] != nil
+      @label_1= page.css(".fare-details .fare-details__pair_container .fare-details__key")[0].text
     end
   end
 
-  def travel_condition_2
-    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[1].text.!empty?
+  def value_1
+    if page.css(".fare-details .fare-details__pair_container .fare-details__val")[0] != nil
+      @value_1 = page.css(".fare-details .fare-details__pair_container .fare-details__val")[0].text
+    end
+  end
+
+  def label_2
+    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[1] != nil
       @label_2 ||= page.css(".fare-details .fare-details__pair_container .fare-details__key")[1].text
+    end
+  end
+
+  def value_2
+    if page.css(".fare-details .fare-details__pair_container .fare-details__val")[1] != nil
       @value_2 ||= page.css(".fare-details .fare-details__pair_container .fare-details__val")[1].text
     end
   end
 
-  def travel_condition_3
-    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[2].text.!empty?
+  def label_3
+    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[2] != nil
       @label_3 ||= page.css(".fare-details .fare-details__pair_container .fare-details__key")[2].text
+    end
+  end
+
+  def value_3
+    if page.css(".fare-details .fare-details__pair_container .fare-details__val")[2] != nil
       @value_3 ||= page.css(".fare-details .fare-details__pair_container .fare-details__val")[2].text
     end
   end
 
-  def travel_condition_4 #only a few won't have this
-    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[3].text.!empty?
+  def label_4 #only a few won't have this
+    if page.css(".fare-details").css("li").length == 8 || page.css(".fare-details").css("li").length == 10
       @label_4 ||= page.css(".fare-details .fare-details__pair_container .fare-details__key")[3].text
+    end
+  end
+
+  def value_4 #only a few won't have this
+    if page.css(".fare-details").css("li").length == 8 || page.css(".fare-details").css("li").length == 10
       @value_4 ||= page.css(".fare-details .fare-details__pair_container .fare-details__val")[3].text
     end
   end
 
-  def travel_condition_5 #only some will have this
-    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[4].text.!empty?
+  def label_5 #only some will have this
+    if page.css(".fare-details").css("li").length == 10
       @label_5 ||= page.css(".fare-details .fare-details__pair_container .fare-details__key")[4].text
+    end
+  end
+
+  def value_5 #only some will have this
+    if page.css(".fare-details").css("li").length == 10
       @value_5 ||= page.css(".fare-details .fare-details__pair_container .fare-details__val")[4].text
     end
   end
 
-  def travel_condition_6 #probably extra, but just incase!
-    if page.css(".fare-details .fare-details__pair_container .fare-details__key")[5].text.!empty?
+  def label_6 #probably extra, but just incase!
+    if page.css(".fare-details").css("li").length > 10
       @label_6 ||= page.css(".fare-details .fare-details__pair_container .fare-details__key")[5].text
+    end
+  end
+
+  def label_6 #probably extra, but just incase!
+    if page.css(".fare-details").css("li").length > 10
       @value_6 ||= page.css(".fare-details .fare-details__pair_container .fare-details__val")[5].text
     end
   end

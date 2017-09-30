@@ -12,17 +12,31 @@ class FlightDealCLI::CLI
 
   def start
 
-    print_deals_list
+  print_deals_list
 
-    puts ""
-    puts "What deal would you like more information on? Please type a number:"
-    input = gets.strip.to_i
+  puts ""
+  puts "What deal would you like more information on? Please type a number:"
+  input = gets.strip.to_i
 
-    print_one_deal(input)
+  choice = FlightDealCLI::Deal.find(input)
+
+  print_one_deal(choice)
+
+  puts ""
+  puts "Would you like to check out another flight deal? Please type 'yes' or 'no':"
+
+  input = gets.strip.downcase
+  until input == 'yes' || input == 'no'
+
+  elsif input == 'no'
+    puts "Thanks for coming! Come back tomorrow for more great flight deals!"
+    exit
+  else
+    puts "Invalid entry. Please enter 'yes' or 'no':"
+    input = gets.strip.downcase
 
   end
-
-
+end
 
   def print_deals_list
     puts ""
@@ -31,12 +45,18 @@ class FlightDealCLI::CLI
     end
   end
 
-  def print_one_deal(input)
-
-
+  def print_one_deal(choice)
+    puts ""
+    puts "********#{choice.departure} ---> #{choice.arrival}********"
+    puts ""
+    puts "Price:    #{choice.price}"
+    puts "#{choice.label_1}:    #{choice.value_1}"
+    puts "#{choice.label_2}:    #{choice.value_2}"
+    puts "#{choice.label_3}:    #{choice.value_3}"
+    puts "#{choice.label_4}:    #{choice.value_4}" if choice.label_4 && choice.value_4 != nil
+    puts "#{choice.label_5}:    #{choice.value_5}" if choice.label_5 && choice.value_5 != nil
+    puts "#{choice.label_6}:    #{choice.value_6}" if choice.label_6 && choice.value_6 != nil
   end
-
-
 
 
 end
