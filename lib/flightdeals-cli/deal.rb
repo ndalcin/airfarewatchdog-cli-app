@@ -1,11 +1,12 @@
 class FlightDealCLI::Deal
 
-  attr_accessor :page, :price, :departure, :arrival, :link, :label_1, :label_2, :label_3, :label_4, :label_5, :label_6, :value_1, :value_2, :value_3, :value_4, :value_5, :value_6
+  attr_accessor :page, :rt, :price, :departure, :arrival, :link, :label_1, :label_2, :label_3, :label_4, :label_5, :label_6, :value_1, :value_2, :value_3, :value_4, :value_5, :value_6
 
   @@all = []
 
   def self.new_from_deal_page(deal)
     self.new(
+      deal.css(".fare_rt_text").text,
       deal.css(".fare_price_text").text,
       deal.css(".fare_departure").text.strip.gsub!( /\s+/, ' ').delete("\n"),
       deal.css(".fare_arrival").text.strip.gsub!( /\s+/, ' ').delete("\n"),
@@ -13,7 +14,8 @@ class FlightDealCLI::Deal
     )
   end
 
-  def initialize(price, departure, arrival, link)
+  def initialize(rt, price, departure, arrival, link)
+    @rt = rt
     @price = price
     @departure = departure
     @arrival = arrival

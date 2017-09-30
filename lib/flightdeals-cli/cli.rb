@@ -49,7 +49,6 @@ class FlightDealCLI::CLI
 
   def goodbye
     puts ""
-    puts ""
     puts "***Thanks for coming! Come back tomorrow for more great flight deals!***"
     exit
   end
@@ -57,7 +56,7 @@ class FlightDealCLI::CLI
   def print_deals_list
     puts ""
     FlightDealCLI::Deal.all.each_with_index do |deal,index|
-      puts "#{index+1}. #{deal.departure} - #{deal.arrival} for #{deal.price}"
+      puts "#{index+1}. #{deal.departure} - #{deal.arrival} for #{deal.price} #{deal.rt}"
     end
   end
 
@@ -65,7 +64,7 @@ class FlightDealCLI::CLI
     puts ""
     puts "********#{choice.departure} ---> #{choice.arrival}********"
     puts ""
-    puts "Price:    #{choice.price}"
+    puts "Price:    #{choice.price} #{choice.rt}"
     puts "#{choice.label_1}:    #{choice.value_1}"
     puts "#{choice.label_2}:    #{choice.value_2}"
     puts "#{choice.label_3}:    #{choice.value_3}"
