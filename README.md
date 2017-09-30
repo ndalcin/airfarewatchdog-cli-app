@@ -7,12 +7,6 @@
   This is a CLI that informs users of the best flight deals of the day as determined by AirfareWatchDog's website. The list the users see comes from their Top-50 Fares page that is updated daily, however some days there are not 50 deals. The user will be able to see the following information:
   route, price, airlines, stay requirements, travel days, travel period, and URLs for more information.
 
-## Installation
-
-```ruby
-  bundle install
-```
-
 ## Usage
 
   After checking out the repo, run `bundle install` to install dependencies. Then, run `bin/flightdeals` for an interactive prompt that will allow you to experiment.
