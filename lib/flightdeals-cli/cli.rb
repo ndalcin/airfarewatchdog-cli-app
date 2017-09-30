@@ -8,11 +8,11 @@ class FlightDealCLI::CLI
   end
 
   def start
-    puts "---Welcome to Daily Flight Deals---"
+    puts "** Welcome to AirfareWatchDog's Flight Deals **"
     FlightDealCLI::Scraper.new.make_deal
     puts ""
-    puts "Let me find today's best 50 deals.."
-    puts "-----------------------------------"
+    puts "Let me find today's best deals! One moment please.."
+    puts "---------------------------------------------------"
     sleep(3)
   end
 
@@ -20,7 +20,7 @@ class FlightDealCLI::CLI
     print_deals_list
 
     puts ""
-    puts "What deal would you like more information on? Please type a number:"
+    puts "Which deal would you like more information on? Please type a number:"
 
     input = gets.strip.to_i
 
@@ -48,7 +48,9 @@ class FlightDealCLI::CLI
   end
 
   def goodbye
-    puts "Thanks for coming! Come back tomorrow for more great flight deals!"
+    puts ""
+    puts ""
+    puts "***Thanks for coming! Come back tomorrow for more great flight deals!***"
     exit
   end
 
@@ -70,6 +72,8 @@ class FlightDealCLI::CLI
     puts "#{choice.label_4}:    #{choice.value_4}" if choice.label_4 && choice.value_4 != nil
     puts "#{choice.label_5}:    #{choice.value_5}" if choice.label_5 && choice.value_5 != nil
     puts "#{choice.label_6}:    #{choice.value_6}" if choice.label_6 && choice.value_6 != nil
+    puts ""
+    puts "For more information on this deal: #{choice.link}"
   end
 
 end
