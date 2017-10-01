@@ -33,7 +33,7 @@ class FlightDealCLI::CLI
     while input != 'exit'
       puts ""
       puts "Would you like to check out another flight deal? Please type 'yes' or 'no':"
-
+      puts "You may type exit at any time to exit the program."
       input = gets.strip.downcase
 
       case input
@@ -72,7 +72,7 @@ class FlightDealCLI::CLI
     puts "#{choice.label_5}:    #{choice.value_5}" if choice.label_5 && choice.value_5 != nil
     puts "#{choice.label_6}:    #{choice.value_6}" if choice.label_6 && choice.value_6 != nil
     puts ""
-    puts "For more information on this deal: #{choice.link}"
+    puts "For more info, visit: #{choice.link}"
   end
 
 end

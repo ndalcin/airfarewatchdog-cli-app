@@ -107,7 +107,4 @@ class FlightDealCLI::Deal
     end
   end
 
-
-
-
 end
