@@ -2,4 +2,5 @@
 require_relative "../lib/flightdeal-cli"
 
 
+
 FlightDealCLI::CLI.new.call

@@ -10,10 +10,10 @@ class FlightDealCLI::CLI
   def start
     puts "** Welcome to AirfareWatchDog's Flight Deals **"
     FlightDealCLI::Scraper.new.make_deal
+    binding.pry
     puts ""
     puts "Let me find today's best deals! One moment please.."
     puts "---------------------------------------------------"
-    sleep(3)
   end
 
   def deals
@@ -25,6 +25,8 @@ class FlightDealCLI::CLI
     input = gets.strip.to_i
 
     choice = FlightDealCLI::Deal.find(input)
+    FlightDealCLI::Scraper.scrape_additional_details(choice)
+
     print_one_deal(choice)
   end
 
