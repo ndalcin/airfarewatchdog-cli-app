@@ -2,7 +2,7 @@
 
 Specs:
 - [x] Have a CLI for interfacing with the application:
-    In my lib folder, the cli.rb file allows for user input and interaction with the application.
+    In my lib folder, the cli.rb file accepts user input using #gets, which allows for interaction with the application.
 
 - [x] Pull data from an external source:
 

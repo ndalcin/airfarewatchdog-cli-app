@@ -1,7 +1,5 @@
 # AirfareWatchDog CLI
 
-<!-- Make sure to create a good README.md with a short description, install instructions, a contributors guide and a link to the license for your code. -->
-
 ## Description
 
   This is a CLI that informs users of the best flight deals of the day as determined by AirfareWatchDog's website. The list the users see comes from their Top-50 Fares page that is updated daily, however some days there are not 50 deals. The user will be able to see the following information:
@@ -9,7 +7,7 @@
 
 ## Usage
 
-  After checking out the repo, run `bundle install` to install dependencies. Then, run `bin/flightdeals` for an interactive prompt that will allow you to experiment.
+  After cloning and checking out the repo run `bundle install` to install dependencies. Then, run `bin/flightdeals` for an interactive prompt that will allow you to experiment.
 
 ## Contributing
 
@@ -17,6 +15,8 @@
 
 ## License
 
-
+  This project is available as open source under the terms of the MIT License (see LICENSE.txt file).
 
 ## Code of Conduct
+
+  Everyone interacting in the EightBall project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct (see CODE_OF_CONDUCT.md file).
