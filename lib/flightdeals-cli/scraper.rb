@@ -6,7 +6,7 @@
 class FlightDealCLI::Scraper
 
   def get_page
-    Nokogiri::HTML(open("http://www.airfarewatchdog.com/top-50-fares/"))
+    Nokogiri::HTML(open("https://www.airfarewatchdog.com/top-50-fares/"))
   end
 
   def scrape_list_page

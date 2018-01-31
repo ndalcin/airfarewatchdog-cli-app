@@ -10,7 +10,6 @@ class FlightDealCLI::CLI
   def start
     puts "** Welcome to AirfareWatchDog's Flight Deals **"
     FlightDealCLI::Scraper.new.make_deal
-    binding.pry
     puts ""
     puts "Let me find today's best deals! One moment please.."
     puts "---------------------------------------------------"
